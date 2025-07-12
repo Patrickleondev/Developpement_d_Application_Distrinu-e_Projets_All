@@ -53,9 +53,9 @@ Documentation_Projets_Distribues/
 └── 04_Application_Meteo/             # Documentation Météo
 ```
 
-## 🎯 Concepts clés couverts
+##  Concepts clés couverts
 
-### 🔧 Technologies Java EE/Jakarta EE
+### Technologies Java EE/Jakarta EE
 - **JAX-RS** : Services web RESTful
 - **JMS** : Messaging asynchrone
 - **JPA** : Persistance des données
@@ -75,13 +75,14 @@ Documentation_Projets_Distribues/
 - **Messaging** : Communication asynchrone
 - **Architecture** : Séparation des responsabilités
 
-## 🚀 Démarrage rapide
+##  Démarrage rapide
 
 ### Prérequis
 - **Java** : Version 11 ou supérieure
+- - **JDK** : 17,21
 - **Maven** : Version 3.6 ou supérieure
-- **Serveur d'application** : GlassFish, WildFly, ou TomEE
-- **IDE** : NetBeans, Eclipse, ou IntelliJ IDEA
+- **Serveur d'application** : PayaraGlassFish,
+- **IDE** : NetBeans25 (Recommandé) , Eclipse, ou IntelliJ IDEA
 
 ### Installation
 ```bash
