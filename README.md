@@ -4,7 +4,7 @@
 
 Ce repository contient une collection complète de projets Java démontrant les concepts fondamentaux dans le cadre de notre cours de développement d'applications distribuées durant tout le semestre 6. Chaque projet illustre des technologies et patterns spécifiques utilisés dans le développement d'applications d'entreprise.
 
-## 🚀 Projets inclus
+##  Projets inclus
 
 ### 1. 🌐 [Web Services REST](pd1-pd2/)
 **Projets** : `pd1` (Serveur REST) et `pd2` (Client REST)
