@@ -79,9 +79,9 @@ Documentation_Projets_Distribues/
 
 ### Prérequis
 - **Java** : Version 11 ou supérieure
-- - **JDK** : 17,21
+-  **JDK** : 17,21
 - **Maven** : Version 3.6 ou supérieure
-- **Serveur d'application** : PayaraGlassFish,
+- **Serveur d'application** : Payara6 (Recommandé par le prof), GlassFish,
 - **IDE** : NetBeans25 (Recommandé) , Eclipse, ou IntelliJ IDEA
 
 ### Installation
@@ -136,6 +136,8 @@ curl http://localhost:8080/boutique-api/api/produits
 curl -X POST http://localhost:8080/boutique-api/api/produits \
   -H "Content-Type: application/json" \
   -d '{"nom":"Produit Test","prix":29.99}'
+
+(Possible avec RESTed)
 ```
 
 ### Tests Météo
