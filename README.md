@@ -178,6 +178,7 @@ curl "http://api.weatherstack.com/current?access_key=YOUR_KEY&query=Paris"
 
 ### Outils de développement
 - [NetBeans IDE](https://netbeans.apache.org/)
+- [NetBeans IDE] - Extension intégré dans le navigateur Firefox.
 - [Postman](https://www.postman.com/) - Test d'APIs
 - [curl](https://curl.se/) - Tests en ligne de commande
 
@@ -187,7 +188,7 @@ Ce repository est conçu pour l'apprentissage et la préparation aux examens. Le
 
 ## 📄 Licence
 
-Ce projet est destiné à des fins éducatives et de formation.
+Ce projet est destiné à des fins éducatives et dans le cadre de notre cours de développement d'application distribuée.
 
 ---
 
