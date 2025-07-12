@@ -178,7 +178,7 @@ curl "http://api.weatherstack.com/current?access_key=YOUR_KEY&query=Paris"
 
 ### Outils de développement
 - [NetBeans IDE](https://netbeans.apache.org/)
-- [NetBeans IDE] - Extension intégré dans le navigateur Firefox.
+- [NetBeans IDE](https://addons.mozilla.org/fr/firefox/addon/rested/) - Extension intégré dans le navigateur (Ce lien est pour Firefox, il y en a pour edge, chrome,...).
 - [Postman](https://www.postman.com/) - Test d'APIs
 - [curl](https://curl.se/) - Tests en ligne de commande
 
