@@ -1,0 +1,54 @@
+# Fichiers de build Maven
+target/
+*.war
+*.jar
+*.ear
+
+# Fichiers de configuration IDE
+.settings/
+.project
+.classpath
+.vscode/
+.idea/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.log
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+
+# Fichiers de données
+*.db
+*.sqlite
+
+# Fichiers de configuration serveur
+glassfish-resources.xml
+wildfly-resources.xml
+
+# Fichiers de cache
+.m2/repository/
+node_modules/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de logs
+logs/
+*.log
+
+# Fichiers de configuration locale
+application.properties
+application.yml
+*.env
+
+# Fichiers de test
+test-results/
+coverage/
+
+# Fichiers de déploiement
+deploy/
+dist/ 
