@@ -104,13 +104,14 @@ mvn clean compile
 mvn clean package
 
 # Déployer sur le serveur d'application
-# (selon votre serveur : GlassFish, WildFly, etc.)
+# (selon votre serveur : Payara6, GlassFish,)
 ```
 
 ## 🧪 Tests et exemples
 
 ### Tests Web Services
 ```bash
+Ou soit avec RESTed carrément une extension dans les navigateur pour les requetes HTTP
 # Test du serveur pd1
 curl http://localhost:8080/pd1/api/hello
 
@@ -138,7 +139,7 @@ curl -X POST http://localhost:8080/boutique-api/api/produits \
 
 ### Tests Météo
 ```bash
-# Exécuter l'application
+# Exécuter l'application (Ou exécuter avec Netbeans)
 java -jar meteo0/target/meteo0-1.0-SNAPSHOT.jar
 
 # Test avec curl
