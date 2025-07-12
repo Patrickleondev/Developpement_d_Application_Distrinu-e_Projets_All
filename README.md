@@ -2,7 +2,7 @@
 
 ## 📋 Vue d'ensemble
 
-Ce repository contient une collection complète de projets Java démontrant les concepts fondamentaux du développement d'applications distribuées. Chaque projet illustre des technologies et patterns spécifiques utilisés dans le développement d'applications d'entreprise.
+Ce repository contient une collection complète de projets Java démontrant les concepts fondamentaux dans le cadre de notre cours de développement d'applications distribuées durant tout le semestre 6. Chaque projet illustre des technologies et patterns spécifiques utilisés dans le développement d'applications d'entreprise.
 
 ## 🚀 Projets inclus
 
