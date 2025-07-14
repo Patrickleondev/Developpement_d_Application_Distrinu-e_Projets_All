@@ -1,3 +1,5 @@
+![Examen Authentification](exam.jpg)
+
 # Système d'Authentification avec JAX-RS et JMS
 
 ## Vue d'ensemble
