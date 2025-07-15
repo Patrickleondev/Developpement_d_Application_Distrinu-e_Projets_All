@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Gestion des Élèves</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .endpoint {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .method {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .url {
+            font-family: monospace;
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .description {
+            color: #666;
+            margin-top: 5px;
+        }
+        .test-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e7f3ff;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 API Gestion des Élèves</h1>
+        <p>Cette API REST permet de gérer les inscriptions d'élèves avec les opérations CRUD classiques.</p>
+        
+        <h2>📋 Endpoints Disponibles</h2>
+        
+        <div class="endpoint">
+            <div class="method">POST</div>
+            <div class="url">/api/eleves</div>
+            <div class="description">Créer un nouvel élève</div>
+        </div>
+        
+        <div class="endpoint">
+            <div class="method">GET</div>
+            <div class="url">/api/eleves</div>
+            <div class="description">Récupérer tous les élèves</div>
+        </div>
+        
+        <div class="endpoint">
+            <div class="method">GET</div>
+            <div class="url">/api/eleves/{nom}/{prenom}</div>
+            <div class="description">Rechercher un élève par nom et prénom</div>
+        </div>
+        
+        <div class="endpoint">
+            <div class="method">PUT</div>
+            <div class="url">/api/eleves</div>
+            <div class="description">Mettre à jour un élève existant</div>
+        </div>
+        
+        <div class="endpoint">
+            <div class="method">DELETE</div>
+            <div class="url">/api/eleves/{nom}/{prenom}</div>
+            <div class="description">Supprimer un élève</div>
+        </div>
+        
+        <div class="endpoint">
+            <div class="method">GET</div>
+            <div class="url">/api/eleves/count</div>
+            <div class="description">Obtenir le nombre total d'élèves</div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🧪 Tests Rapides</h3>
+            <p>Cliquez sur les boutons ci-dessous pour tester l'API :</p>
+            
+            <button onclick="testAPI()">Test de l'API</button>
+            <button onclick="getAllStudents()">Lister les élèves</button>
+            <button onclick="getCount()">Compter les élèves</button>
+            <button onclick="createStudent()">Créer un élève test</button>
+            
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/student-registration/api';
+        
+        async function testAPI() {
+            try {
+                const response = await fetch(`${API_BASE}/eleves/test`);
+                const result = await response.text();
+                document.getElementById('result').textContent = `✅ Test réussi: ${result}`;
+            } catch (error) {
+                document.getElementById('result').textContent = `❌ Erreur: ${error.message}`;
+            }
+        }
+        
+        async function getAllStudents() {
+            try {
+                const response = await fetch(`${API_BASE}/eleves`);
+                const students = await response.json();
+                document.getElementById('result').textContent = `📚 Élèves (${students.length}):\n${JSON.stringify(students, null, 2)}`;
+            } catch (error) {
+                document.getElementById('result').textContent = `❌ Erreur: ${error.message}`;
+            }
+        }
+        
+        async function getCount() {
+            try {
+                const response = await fetch(`${API_BASE}/eleves/count`);
+                const count = await response.text();
+                document.getElementById('result').textContent = `📊 Nombre d'élèves: ${count}`;
+            } catch (error) {
+                document.getElementById('result').textContent = `❌ Erreur: ${error.message}`;
+            }
+        }
+        
+        async function createStudent() {
+            const student = {
+                nom: "Doe",
+                prenom: "John",
+                classe: "Terminal",
+                sexe: "Homme",
+                option: "Scientifique",
+                journee: "Lundi"
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/eleves`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(student)
+                });
+                
+                if (response.ok) {
+                    const created = await response.json();
+                    document.getElementById('result').textContent = `✅ Élève créé:\n${JSON.stringify(created, null, 2)}`;
+                } else {
+                    const error = await response.text();
+                    document.getElementById('result').textContent = `❌ Erreur: ${error}`;
+                }
+            } catch (error) {
+                document.getElementById('result').textContent = `❌ Erreur: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html> 

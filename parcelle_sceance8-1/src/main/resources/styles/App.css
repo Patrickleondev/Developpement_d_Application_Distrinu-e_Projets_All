@@ -1,0 +1,50 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.text-field:focused {
+    -fx-text-box-border:#FFFFFF;
+}
+
+.text-field
+{
+    -fx-prompt-text-fill: #465058;
+    -fx-text-inner-color:#FBFCFC;
+    -fx-font-size:15px;
+    -fx-border-radius: 4px;
+    -fx-background-color: #2A363F;
+    -fx-border-color: #465058
+
+}
+
+.button
+{
+    -fx-border-radius: 4px;	
+    
+}
+
+.done-btn
+{
+    -fx-background-color: #6ED9A0;
+}
+
+.cancel-btn
+{
+    -fx-background-color:#d93737;
+}
+
+
+.edit-btn
+{
+    -fx-background-color:#009966;
+}
+
+.delete-btn
+{
+    -fx-background-color:#d93737;
+}
+

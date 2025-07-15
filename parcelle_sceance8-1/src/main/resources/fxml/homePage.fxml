@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Double?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2A363F;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epl.parceljavafxtp.controller.HomePageController">
+    <stylesheets>
+        <URL value="@/styles/homepage.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="globalAreaId" layoutX="664.0" layoutY="338.0" prefHeight="35.0" prefWidth="205.0" promptText="Superficie" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@../styles/homepage.css" />
+            <URL value="@../styles/App.css" />
+         </stylesheets>
+      </TextField>
+      <Button fx:id="editGolbalAreaBtnId" layoutX="721.0" layoutY="395.0" onAction="#handleEditGolbalArea" prefHeight="18.0" prefWidth="88.0" styleClass="edit-btn" text="Valider" textFill="#fbfcfc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../styles/App.css" />
+            <URL value="@../styles/homepage.css" />
+         </stylesheets>
+      </Button>
+      <Text fill="#fbfcfc" layoutX="650.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrer la superficie de votre parcelle (en mètre carré)" textAlignment="CENTER" wrappingWidth="229.25027465820312">
+         <font>
+            <Font name="Century Gothic Bold" size="13.0" />
+         </font>
+      </Text>
+      <ScrollPane layoutX="55.0" layoutY="279.0">
+         <content>
+            <TableView fx:id="cropTableId" prefHeight="181.0" prefWidth="506.0">
+               <columns>
+                  <TableColumn fx:id="nameTableCol" prefWidth="179.3333444595337" text="Nom" />
+                  <TableColumn fx:id="shapeTableCol" prefWidth="118.6666259765625" text="Forme" />
+                  <TableColumn fx:id="areaTableCol" prefWidth="100.0" text="Superficie" />
+                  <TableColumn fx:id="deleteTableCol" prefWidth="93.99996948242188" text="Suppimer" />
+               </columns>
+               <styleClass>
+                  <String fx:value="mainFxmlClass" />
+                  <String fx:value="t-view" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../styles/App.css" />
+                  <URL value="@../styles/homepage.css" />
+               </stylesheets>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Text fill="#fbfcfc" layoutX="55.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des cultures de votre parcelle " textAlignment="CENTER" wrappingWidth="267.9169464111328">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Text>
+      <Button layoutX="365.0" layoutY="213.0" onAction="#handleParcelleInfoForm" prefHeight="32.0" prefWidth="168.0" styleClass="edit-btn" text="Ajouter une culture" textFill="#fbfcfc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../styles/App.css" />
+            <URL value="@../styles/homepage.css" />
+         </stylesheets>
+      </Button>
+      <Pane layoutX="45.0" layoutY="32.0" prefHeight="73.0" prefWidth="214.0">
+         <children>
+            <Group layoutX="47.0" layoutY="22.0">
+               <children>
+                  <Text fill="#fbfcfc" layoutX="32.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parecelle" wrappingWidth="127.25025939941406">
+                     <font>
+                        <Font name="Century Gothic" size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Group>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#539778" height="18.0" layoutX="2.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="34.0" />
+            <Circle fill="#539778" layoutX="49.0" layoutY="53.0" radius="17.0" stroke="BLACK" strokeType="INSIDE" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#539778" height="10.0" layoutX="45.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="10.0" />
+            <Polygon fill="#539778" layoutX="16.0" layoutY="61.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" stroke="BLACK" strokeType="INSIDE">
+               <points>
+                  <Double fx:value="-50.0" />
+                  <Double fx:value="40.0" />
+                  <Double fx:value="50.0" />
+                  <Double fx:value="40.0" />
+                  <Double fx:value="0.0" />
+                  <Double fx:value="-60.0" />
+               </points>
+            </Polygon>
+         </children>
+      </Pane>
+      <Line endX="150.0" layoutX="627.0" layoutY="355.0" rotate="90.0" startX="-150.0" stroke="#465058" strokeWidth="2.0" />
+      <VBox alignment="CENTER" layoutX="583.0" layoutY="40.0" prefHeight="130.0" prefWidth="285.0">
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="#fbfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="Superficie (m²) : " wrappingWidth="127.250244140625">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="globalAreaValueLabel" fill="#3be6aa" strokeType="OUTSIDE" strokeWidth="0.0" text="-----" wrappingWidth="127.250244140625">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="264.0">
+               <children>
+                  <Text fx:id="resultLabelId" fill="#3be6aa" strokeType="OUTSIDE" strokeWidth="0.0" text="Mettez à jour la superficie de votre parcelle" wrappingWidth="279.91686248779297">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button fx:id="handleGamingSpace" layoutX="689.0" layoutY="473.0" onAction="#handleGamingSpace" prefHeight="32.0" prefWidth="168.0" styleClass="cancel-btn" text="Gaming Space" textFill="#fbfcfc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../styles/App.css" />
+            <URL value="@../styles/homepage.css" />
+         </stylesheets>
+      </Button>
+      <Button fx:id="deleteAll" layoutX="376.0" layoutY="476.0" mnemonicParsing="false" onAction="#deleteAll" prefHeight="31.0" prefWidth="168.0" styleClass="delete-btn" text="Supprimer tous" textFill="#fbfcfc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../styles/App.css" />
+            <URL value="@../styles/homepage.css" />
+         </stylesheets>
+      </Button>
+   </children>
+</AnchorPane>
