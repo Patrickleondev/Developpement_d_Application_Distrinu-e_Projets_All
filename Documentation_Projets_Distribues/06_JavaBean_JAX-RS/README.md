@@ -2,7 +2,8 @@
 
 ## 📸 Photo de l'Examen
 
-![Examen Programmation Distribuée](exam2.jpg)
+![Uploading image.png…]()
+
 
 *Examen de fin de semestre - Programmation Distribuée (2021-2022)*
 
