@@ -2,7 +2,8 @@
 
 ## 📸 Photo de l'Examen
 
-![Uploading image.png…]()
+<img width="1218" height="1545" alt="image" src="https://github.com/user-attachments/assets/5e29da15-66ec-47a8-b92a-79781e37e276" />
+
 
 
 *Examen de fin de semestre - Programmation Distribuée (2021-2022)*
