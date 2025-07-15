@@ -1,6 +1,7 @@
 ![Examen Authentification](exam.jpg)
 
 # Système d'Authentification avec JAX-RS et JMS
+![Uploading photo_2025-07-14_10-30-30.jpg…]()
 
 ## Vue d'ensemble
 
