@@ -1,24 +1,16 @@
 package tg.univlome.epl.auth;
 
-import jakarta.annotation.Resource;
-import jakarta.jms.ConnectionFactory;
-import jakarta.jms.Destination;
-import jakarta.jms.JMSContext;
-import jakarta.jms.JMSException;
-import jakarta.jms.JMSProducer;
+import jakarta.jms.*;
+import jakarta.naming.InitialContext;
+import jakarta.naming.NamingException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
 import java.time.LocalDateTime;
 
 @Path("/auth")
 public class AuthenticationResource {
-
-    @Resource(lookup = "jms/cf1")
-    private ConnectionFactory connectionFactory;
-
-    @Resource(lookup = "jms/authentificationTopic")
-    private Destination authentificationTopic;
 
     private final AuthenticationService authService = AuthenticationService.getInstance();
 
@@ -29,23 +21,27 @@ public class AuthenticationResource {
     @Produces(MediaType.TEXT_PLAIN)
     public Response authenticate(
             @QueryParam("login") String login,
-            @QueryParam("password") String password) throws JMSException {
+            @QueryParam("password") String password) {
 
         if (login == null || password == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                           .entity("Login et mot de passe requis")
-                           .build();
+                    .entity("Login et mot de passe requis")
+                    .build();
         }
 
         String token = authService.authentifier(login, password);
 
         if (token != null) {
-            sendJMSNotification(login); // peut lancer JMSException
+            try {
+                sendJMSNotification(login);
+            } catch (Exception e) {
+                e.printStackTrace(); // Log ou gestion réelle recommandée
+            }
             return Response.ok(token).build();
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
-                           .entity("Credentials invalides")
-                           .build();
+                    .entity("Credentials invalides")
+                    .build();
         }
     }
 
@@ -58,28 +54,33 @@ public class AuthenticationResource {
     public Response verifyToken(@HeaderParam("Authorization") String token) {
         if (token == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                           .entity("Token requis")
-                           .build();
+                    .entity("Token requis")
+                    .build();
         }
 
         if (authService.isValid(token)) {
             return Response.ok(LocalDateTime.now().toString()).build();
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
-                           .entity("Token invalide")
-                           .build();
+                    .entity("Token invalide")
+                    .build();
         }
     }
 
     /**
-     * Envoie une notification JMS lors d'une authentification réussie
+     * Envoie une notification JMS lors d'une authentification réussie (lookup manuel)
      */
-    private void sendJMSNotification(String login) throws JMSException {
-        try (JMSContext context = connectionFactory.createContext()) {
-            JMSProducer producer = context.createProducer();
-            String message = String.format("Utilisateur %s authentifié avec succès à %s",
+    private void sendJMSNotification(String login) throws NamingException, JMSException {
+        InitialContext context = new InitialContext();
+
+        ConnectionFactory cf = (ConnectionFactory) context.lookup("jms/cf1");
+        Destination topic = (Destination) context.lookup("jms/authentificationTopic");
+
+        try (JMSContext jmsContext = cf.createContext("admin", "admin")) {
+            JMSProducer producer = jmsContext.createProducer();
+            String message = String.format("Utilisateur %s authentifié avec succès à %s", 
                                            login, LocalDateTime.now());
-            producer.send(authentificationTopic, message);
+            producer.send(topic, message);
         }
     }
 }
