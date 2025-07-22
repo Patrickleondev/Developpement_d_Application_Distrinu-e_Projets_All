@@ -35,9 +35,10 @@ public class AuthenticationResource {
             sendJMSNotification(login);  // Si une JMSException se produit, elle sera capturée par le mapper
             return Response.ok(token).build();
         } else {
-            return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity("Credentials invalides")
+            return Response.status(Response.Status.FORBIDDEN)
+                    .entity("Identifiants invalides")
                     .build();
+
         }
     }
 
