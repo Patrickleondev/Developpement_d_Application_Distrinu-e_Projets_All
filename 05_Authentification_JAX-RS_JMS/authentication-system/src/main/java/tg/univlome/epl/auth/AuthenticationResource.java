@@ -21,7 +21,7 @@ public class AuthenticationResource {
     @Produces(MediaType.TEXT_PLAIN)
     public Response authenticate(
             @QueryParam("login") String login,
-            @QueryParam("password") String password) {
+            @QueryParam("password") String password) throws JMSException {
 
         if (login == null || password == null) {
             return Response.status(Response.Status.BAD_REQUEST)
@@ -32,11 +32,7 @@ public class AuthenticationResource {
         String token = authService.authentifier(login, password);
 
         if (token != null) {
-            try {
-                sendJMSNotification(login);
-            } catch (Exception e) {
-                e.printStackTrace(); // Log ou gestion réelle recommandée
-            }
+            sendJMSNotification(login);  // Si une JMSException se produit, elle sera capturée par le mapper
             return Response.ok(token).build();
         } else {
             return Response.status(Response.Status.UNAUTHORIZED)
@@ -68,7 +64,7 @@ public class AuthenticationResource {
     }
 
     /**
-     * Envoie une notification JMS lors d'une authentification réussie (lookup manuel)
+     * Envoie une notification JMS lors d'une authentification réussie
      */
     private void sendJMSNotification(String login) throws NamingException, JMSException {
         InitialContext context = new InitialContext();
@@ -78,7 +74,7 @@ public class AuthenticationResource {
 
         try (JMSContext jmsContext = cf.createContext("admin", "admin")) {
             JMSProducer producer = jmsContext.createProducer();
-            String message = String.format("Utilisateur %s authentifié avec succès à %s", 
+            String message = String.format("Utilisateur %s authentifié avec succès à %s",
                                            login, LocalDateTime.now());
             producer.send(topic, message);
         }
